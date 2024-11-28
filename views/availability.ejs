@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Parking Availability</title>
+</head>
+<form action="/" method="GET">
+    <input type="text" name="lotName" placeholder="Search Lot Name">
+    <input type="number" name="minAvailability" placeholder="Minimum Availability">
+    <button type="submit">Filter</button>
+</form>
+<body>
+    <h1>Parking Availability</h1>
+    <table>
+        <tr>
+            <th>Lot Name</th>
+            <th>Availability</th>
+            <th>Day</th>
+        </tr>
+        <% parkingLots.forEach(lot => { %>
+        <tr>
+            <td><%= lot.lotName %></td>
+            <td><%= lot.availability %></td>
+            <td><%= lot.day %></td>
+        </tr>
+        <% }); %>
+    </table>
+</body>
+</html>

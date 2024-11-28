@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Admin Page</title>
+</head>
+<body>
+    <h1>Admin Page</h1>
+    <form action="/admin/add" method="POST">
+        <input type="text" name="lotName" placeholder="Lot Name" required>
+        <input type="number" name="availability" placeholder="Availability" required>
+        <input type="text" name="day" placeholder="Day" required>
+        <button type="submit">Add Parking Lot</button>
+    </form>
+
+    <form action="/admin/delete" method="POST">
+        <input type="text" name="lotName" placeholder="Lot Name to Delete" required>
+        <button type="submit">Delete Parking Lot</button>
+    </form>
+</body>
+</html>
