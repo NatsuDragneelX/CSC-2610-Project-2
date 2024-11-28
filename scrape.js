@@ -23,13 +23,18 @@ const scrapeData = async () => {
             const lotName = $(el).find('td:nth-child(1)').text().trim();
             const availabilityText = $(el).find('td:nth-child(2)').text().trim();
             const availability = parseInt(availabilityText, 10);
-        
-            // Only add unique parking lots
-            if (!parkingLots.some(lot => lot.lotName === lotName) && !isNaN(availability)) {
-                parkingLots.push({ lotName, availability, day: 'Monday' }); // Use dynamic day if needed
+
+            const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]; // Add all days
+
+            if (!isNaN(availability)) {
+                // Create an entry for each day
+                days.forEach(day => {
+                    parkingLots.push({ lotName, availability, day });
+                });
+            } else {
+                console.log(`Skipping invalid availability value: ${availabilityText} for ${lotName}`);
             }
         });
-        
 
         // Clear and insert new data
         await Parking.deleteMany({});

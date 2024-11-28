@@ -1,29 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
     <title>Parking Availability</title>
 </head>
-<form action="/" method="GET">
-    <input type="text" name="lotName" placeholder="Search Lot Name">
-    <input type="number" name="minAvailability" placeholder="Minimum Availability">
-    <button type="submit">Filter</button>
-</form>
 <body>
-    <h1>Parking Availability</h1>
-    <table>
-        <tr>
-            <th>Lot Name</th>
-            <th>Availability</th>
-            <th>Day</th>
-        </tr>
-        <% parkingLots.forEach(lot => { %>
-        <tr>
-            <td><%= lot.lotName %></td>
-            <td><%= lot.availability %></td>
-            <td><%= lot.day %></td>
-        </tr>
-        <% }); %>
-    </table>
+    <div class="container">
+        <h1>Parking Availability</h1>
+
+        <!-- Filter Form -->
+        <form action="/" method="GET" class="filter-form">
+            <div class="form-group">
+                <label for="day">Select Day:</label>
+                <select name="day" id="day">
+                    <option value="">All Days</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="lotName" placeholder="Search Lot Name" class="input-text">
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="minAvailability" placeholder="Minimum Availability" class="input-number">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+
+        <!-- Parking Data Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Lot Name</th>
+                    <th>Availability</th>
+                    <th>Day</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% parkingLots.forEach(lot => { %>
+                <tr>
+                    <td><%= lot.lotName %></td>
+                    <td><%= lot.availability %></td>
+                    <td><%= lot.day %></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
