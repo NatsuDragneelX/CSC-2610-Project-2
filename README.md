@@ -1,24 +1,20 @@
 
 ---
 
-### **Installation Instructions**
+## **Parking Availability Application**
 
-Follow these steps to set up and run the application:
-
----
+### **Setup Instructions**
 
 #### **1. Prerequisites**
-Before starting, ensure you have the following installed on your system:
-- **Node.js**: [Download Node.js](https://nodejs.org/)
-- **MongoDB**:
-  - Install MongoDB Community Server locally: [Download MongoDB](https://www.mongodb.com/try/download/community)
-  - Alternatively, use **MongoDB Atlas** for cloud-hosted MongoDB.
-- **Git** (optional but recommended): [Download Git](https://git-scm.com/)
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/)
+- [MongoDB Community Server](https://www.mongodb.com/try/download/community) or **MongoDB Atlas** for cloud-hosted MongoDB.
+- [Git](https://git-scm.com/) (optional).
 
 ---
 
 #### **2. Clone the Repository**
-Clone the project repository to your local machine:
+Clone the project and navigate into the folder:
 ```bash
 git clone <repository-url>
 cd <repository-folder>
@@ -27,90 +23,83 @@ cd <repository-folder>
 ---
 
 #### **3. Install Dependencies**
-Run the following command in the project directory to install all required Node.js packages:
+Install the required packages:
 ```bash
 npm install
 ```
 
-This will install the following dependencies:
-- **express**: Web application framework.
-- **mongoose**: MongoDB object modeling for Node.js.
-- **body-parser**: Middleware to parse incoming request bodies.
-- **ejs**: Template engine for rendering HTML views.
-- **dotenv**: Environment variable management.
-- **axios**: HTTP client for making requests (used for scraping).
-- **cheerio**: Scraping library for parsing HTML.
-
 ---
 
 #### **4. Set Up Environment Variables**
-Create a `.env` file in the root of the project directory and add the following:
+Create a `.env` file and configure the following:
 ```plaintext
 MONGO_URI=mongodb://localhost:27017/parking
 PORT=3000
 ```
-- Replace `MONGO_URI` with your MongoDB connection string if you’re using MongoDB Atlas.
 
 ---
 
 #### **5. Start MongoDB**
-- If MongoDB is installed locally, start the MongoDB server:
-  ```bash
-  mongod
-  ```
-- For MongoDB Atlas, ensure your database cluster is running.
+Start the MongoDB server locally: optional
+```bash
+mongod
+```
+If using MongoDB Atlas, ensure your cluster is running and update `MONGO_URI` in `.env`.
 
 ---
 
-#### **6. Seed the Database (Optional)**
-You can populate the database with test data using the `seed.js` script:
+#### **6. Seed or Scrape Data**
+To populate the database with parking data, choose one of the following:
+
+**Option 1: Seed Test Data**
 ```bash
 node seed.js
 ```
 
----
-
-#### **7. Scrape Parking Data**
-To scrape live data from the LSU Parking website, run the `scrape.js` script:
+**Option 2: Scrape LSU Parking Data**
 ```bash
 node scrape.js
 ```
 
 ---
 
-#### **8. Run the Application**
-Start the application using:
+#### **7. Run the Application**
+Start the server:
 ```bash
 node app.js
 ```
 
-The application will run at: [http://localhost:3000](http://localhost:3000)
+Visit the application in your browser:
+[http://localhost:3000](http://localhost:3000)
 
 ---
 
-### **Deployment Instructions**
+### **Commands for Testing**
+- Start MongoDB: optional
+  ```bash
+  mongod
+  ```
+- Seed Data:
+  ```bash
+  node seed.js
+  ```
+- Scrape Data:
+  ```bash
+  node scrape.js
+  ```
+- Start the Application:
+  ```bash
+  node app.js
+  ```
 
-#### **1. Deploy to AWS EC2**
-To make your application accessible online, deploy it to an AWS EC2 instance:
-1. Launch an **Ubuntu EC2 instance**.
-2. Install Node.js and MongoDB:
-   ```bash
-   sudo apt update
-   sudo apt install nodejs npm mongodb-clients
-   ```
-3. Clone your project from GitHub:
-   ```bash
-   git clone <repository-url>
-   cd <repository-folder>
-   npm install
-   ```
-4. Start the application:
-   ```bash
-   node app.js
-   ```
+---
 
-#### **2. MongoDB Atlas (Optional)**
-If using MongoDB Atlas, replace `MONGO_URI` in your `.env` file with the Atlas connection string.
+### **Features**
+- **Filter by Day, Lot Name, and Availability**.
+- **Admin Interface**: Add or delete parking lot data.
+- **Responsive Design** with search and filter functionality.
+
+---
 
 ---
 
